@@ -2,6 +2,10 @@
 
 This README provides instructions on how to run the application.
 
+## Live Demo
+
+You can access the live version of the application [here](https://notes-saver-drth.onrender.com/).
+
 # Cloning the Repository
 
 You can clone the repository using the following command:
@@ -14,7 +18,7 @@ You can clone the repository using the following command:
 
 After cloning the repository, navigate to the project directory using:
 
-- cd notes-saver-app
+- cd notes-saver
 
 Then, install the dependencies via:
 
@@ -30,9 +34,7 @@ Once the dependencies are installed, you can run the backend using the following
 
 ## Installing Dependencies
 
-After cloning the repository, navigate to the project directory using:
-
-- cd notes-saver-app
+Open another terminal in the project root directory notes-saver:
 
 Then navigate to the client directory using:
 
@@ -48,3 +50,6 @@ Once the dependencies are installed, you can run the application using the follo
 
 - npm run dev
 
+View the application in your local browser using:
+
+- http://localhost:5173/
