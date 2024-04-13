@@ -6,14 +6,11 @@ import connectDB from './config/connectDb';
 import corsMiddleware from './middlewares/corsMiddleware';
 import cookieParser from 'cookie-parser';
 import * as dotenv from 'dotenv';
-import path from 'path';
 
 dotenv.config();
 
 // Database setup
 connectDB();
-
-// const __dirname = path.resolve();
 
 // Middlewares
 const app = express();
@@ -22,12 +19,12 @@ app.use(express.json());
 app.use(corsMiddleware);
 app.use(cookieParser());
 
-// const httpServer = createServer(app);
+const httpServer = createServer(app);
 
-const PORT = 3000;
+const PORT = process.env.port || 3000;
 
 // Express server setup
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
@@ -37,9 +34,3 @@ app.get('/test', (req, res) => {
 })
 app.use('/api/auth', authRoutes);
 app.use('/api/note', noteRoutes);
-
-app.use(express.static(path.join(__dirname, '/client/dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-});
