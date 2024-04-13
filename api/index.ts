@@ -36,8 +36,10 @@ app.get('/test', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/note', noteRoutes);
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+const dir = path.resolve();
+
+app.use(express.static(path.join(dir, '/client/dist')));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+    res.sendFile(path.join(dir, 'client', 'dist', 'index.html'));
 });
