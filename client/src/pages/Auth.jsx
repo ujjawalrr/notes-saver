@@ -21,7 +21,7 @@ const Auth = () => {
         <img className='w-full h-[calc(100vh-60px)]' src={loginBg} alt="" />
       </div>
       <div className='absolute flex items-center justify-center p-3 top-0 w-full h-full'>
-        <div className='bg-white rounded-lg p-4 xs:w-[352.6px] h-[300px] flex flex-col justify-between'>
+        <div className='bg-white rounded-lg p-4 w-full xs:w-[352.6px] h-[300px] flex flex-col justify-between'>
           <div className="flex justify-center text-sm xs:text-md w-full">
             <button
               className={`px-4 py-2 flex-1 focus:outline-none text-white ${activeTab === 'register'
