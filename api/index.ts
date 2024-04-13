@@ -1,9 +1,7 @@
 import express from 'express';
-// import { createServer } from 'http';
 import authRoutes from './routes/auth';
 import noteRoutes from './routes/note';
 import connectDB from './config/connectDb';
-// import corsMiddleware from './middlewares/corsMiddleware';
 import cookieParser from 'cookie-parser';
 import * as dotenv from 'dotenv';
 import path from 'path';
@@ -15,16 +13,11 @@ connectDB();
 
 // Middlewares
 const app = express();
-// app.set('trust proxy', 1);
 app.use(express.json());
-// app.use(corsMiddleware);
 app.use(cookieParser());
 
-// const httpServer = createServer(app);
+const PORT = 3000;
 
-const PORT = process.env.port || 3000;
-
-// Express server setup
 app.listen(PORT, () => {
   console.log(`Server running!`);
 });
