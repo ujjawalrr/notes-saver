@@ -7,7 +7,11 @@ import corsMiddleware from './middlewares/corsMiddleware';
 import cookieParser from 'cookie-parser';
 import * as dotenv from 'dotenv';
 import path from 'path';
+
 dotenv.config();
+
+// Database setup
+connectDB();
 
 // const __dirname = path.resolve();
 
@@ -17,6 +21,15 @@ app.set('trust proxy', 1);
 app.use(express.json());
 app.use(corsMiddleware);
 app.use(cookieParser());
+
+// const httpServer = createServer(app);
+
+const PORT = 3000;
+
+// Express server setup
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 // Routes
 app.get('/test', (req, res) => {
@@ -28,17 +41,5 @@ app.use('/api/note', noteRoutes);
 app.use(express.static(path.join(__dirname, '/client/dist')));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
-});
-
-// Database setup
-connectDB();
-
-const httpServer = createServer(app);
-
-const PORT = 3000;
-
-// Express server setup
-httpServer.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
