@@ -6,7 +6,10 @@ import connectDB from './config/connectDb';
 import corsMiddleware from './middlewares/corsMiddleware';
 import cookieParser from 'cookie-parser';
 import * as dotenv from 'dotenv';
+import path from 'path';
 dotenv.config();
+
+// const __dirname = path.resolve();
 
 // Middlewares
 const app = express();
@@ -22,14 +25,20 @@ app.get('/test', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/note', noteRoutes);
 
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+});
 
 // Database setup
 connectDB();
 
 const httpServer = createServer(app);
 
+const PORT = 3000;
+
 // Express server setup
-const PORT = process.env.PORT || 3000;
 httpServer.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

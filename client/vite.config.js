@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: import.meta.env.SERVER_URL,
+        target: 'http://localhost:3000',
         secure: false,
       },
     },

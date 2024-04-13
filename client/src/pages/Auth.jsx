@@ -16,7 +16,7 @@ const Auth = () => {
   }, [])
 
   return (
-    <div className="relative container-full mx-auto flex justify-center items-center h-[calc(100vh-60px)] bg-gradient-to-r from-yellow-400 to-yellow-600">
+    <div className="relative container-full mx-auto flex justify-center items-center h-[calc(100vh-60px)]">
       <div className='w-full'>
         <img className='w-full h-[calc(100vh-60px)]' src={loginBg} alt="" />
       </div>
