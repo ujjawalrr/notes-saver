@@ -96,7 +96,7 @@ const AllNotes = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {notes.map((note) =>
                                 <div key={note._id} className="p-6 w-full mx-auto bg-white shadow-md rounded-md overflow-hidden">
-                                    <h2 className="text-lg font-semibold mb-2 line-clamp-1">{note.title}</h2>
+                                    <Link to={`/note/${note._id}`} className="text-lg font-semibold mb-2 line-clamp-1">{note.title}</Link>
                                     <div className={`w-full flex justify-between items-center border-b-2 pb-1`}>
                                         <div className="flex flex-wrap gap-2 items-center justify-center text-xl xs:text-2xl">
                                             <Link to={`/note/${note._id}`} className="text-gray-500 hover:text-gray-700">
