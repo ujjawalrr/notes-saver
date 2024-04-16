@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import toasty from '../utils/Toast';
 import { FaRegSave } from "react-icons/fa";
@@ -9,7 +8,6 @@ import Editor from '../components/editor/Editor';
 import { formatLastUpdated } from '../utils/formatLastUpdated';
 
 const Note = () => {
-    const { currentUser } = useSelector(state => state.user)
     const params = useParams();
     const [note, setNote] = useState();
     const [loading, setLoading] = useState(false);

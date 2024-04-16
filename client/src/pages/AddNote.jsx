@@ -1,17 +1,14 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import toasty from '../utils/Toast';
 import axios from 'axios';
 import Editor from '../components/editor/Editor';
 
 const AddNote = () => {
-    const { currentUser } = useSelector(state => state.user)
     const navigate = useNavigate();
     const [noteData, setNoteData] = useState({
         title: '',
-        content: 'Add Content Here...',
-        userID: currentUser._id
+        content: 'Add Content Here...'
     });
     const [loading, setLoading] = useState(false);
     const handleChange = (e) => {

@@ -6,6 +6,7 @@ import { IoMdLogOut } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutFailure, logoutStart, logoutSuccess } from '../redux/user/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
+import toasty from '../utils/Toast';
 import axios from 'axios';
 
 const Header = () => {
@@ -17,13 +18,10 @@ const Header = () => {
         dispatch(logoutStart());
         try {
             const res = await axios.get('/api/auth/logout');
-            const data = res.data;
-            if (data.success === false) {
-                dispatch(logoutFailure(data.message));
-                return;
-            }
+            toasty(res.data.message, "success")
             dispatch(logoutSuccess());
         } catch (error) {
+            toasty(error.response.data.message, "error")
             dispatch(logoutFailure(error.message));
         }
     }
